@@ -125,7 +125,7 @@ create_deb_package() {
         cp "./debian/DEBIAN/control" "./debian/DEBIAN/control-template"
 
         # Get architecture from Platform and replace x64 by amd64
-        APP_ARCH=echo $1 | sed 's/linux-//g'
+        APP_ARCH=$(echo $1 | sed 's/linux-//g')
         if [[ $1 == linux-x64 ]]; then
             APP_ARCH="amd64"
         fi
