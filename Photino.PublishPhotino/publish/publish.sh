@@ -124,6 +124,7 @@ create_deb_package() {
         # Replace version placeholder in control file, overwrite existing file
         cp "./debian/DEBIAN/control" "./debian/DEBIAN/control-template"
 
+        # Get architecture from Platform and replace x64 by amd64
         APP_ARCH=echo $1 | sed 's/linux-//g'
         if [[ $1 == linux-x64 ]]; then
             APP_ARCH="amd64"
@@ -205,7 +206,7 @@ create_flatpack_package() {
             | sed "s/APP_NAME_LC/$APP_NAME_LC/g"\
             | sed "s/APP_NAME/$APP_NAME/g"\
             | sed "s/APP_URN/$APP_URN/g"\
-            | sed "s/APP_ARCH/$(echo $1 | sed 's/linux-//g')/g" > "./flatpak/$APP_URN.yml"
+            | sed "s/APP_ARCH/$APP_ARCH/g" > "./flatpak/$APP_URN.yml"
 
         rm "./flatpak/APP_URN.yml"
 
@@ -234,7 +235,7 @@ create_flatpack_package() {
             | sed "s/APP_NAME/$APP_NAME/g"\
             | sed "s/APP_URN/$APP_URN/g"\
             | sed "s/APP_DESC_SHORT/$APP_DESC_SHORT/g"\
-            | sed "s/APP_ARCH/$(echo $1 | sed 's/linux-//g')/g" > "./flatpak/app/share/applications/$APP_URN.desktop"
+            | sed "s/APP_ARCH/$APP_ARCH/g" > "./flatpak/app/share/applications/$APP_URN.desktop"
         
         rm "./flatpak/app/share/applications/APP_URN.desktop"
 
@@ -337,7 +338,7 @@ for PLATFORM in $PLATFORMS; do
     # Copy and prepare elements for Linux (Debian Package and Flatpak)
     if [[ $PLATFORM == linux-* ]]; then
         create_deb_package $PLATFORM
-        #create_flatpack_package $PLATFORM
+        create_flatpack_package $PLATFORM
     fi
 
     rm -rf "$PUBLISH_BUILD/$PROJECT_NAME.$APP_VERSION.$PLATFORM"
