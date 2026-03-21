@@ -69,11 +69,11 @@ namespace Photino.HelloPhotino.TestBench
                 //.Load("https://localhost:8080/")
                 .Load("wwwroot/main.html")
                 //.Load("wwwroot/index.html")
-                //.LoadRawString("<h1>Hello Photino!</h1>")
+                //.LoadRawString("<h1>Hello PhotinoX!</h1>")
 
                 //Window settings
                 //.SetIconFile(iconFile)
-                //.SetTitle($"My Photino Window {_windowNumber++}")
+                //.SetTitle($"My PhotinoX Window {_windowNumber++}")
                 //.SetChromeless(true)
                 //.SetTransparent(true)
                 //.SetFullScreen(true)
@@ -109,7 +109,7 @@ namespace Photino.HelloPhotino.TestBench
 
                 //Browser startup flags
                 //.SetBrowserControlInitParameters("--ignore-certificate-errors ")
-                .SetUserAgent("Custom Photino User Agent")
+                .SetUserAgent("Custom PhotinoX User Agent")
                 //.SetMediaAutoplayEnabled(true)
                 //.SetFileSystemAccessEnabled(true)
                 //.SetWebSecurityEnabled(true)
@@ -154,11 +154,11 @@ namespace Photino.HelloPhotino.TestBench
                 //StartUrl = "https://google.com",
                 //StartUrl = "https://duckduckgo.com/?t=ffab&q=user+agent+&ia=answer",
                 StartUrl = "wwwroot/main.html",
-                //StartString = "<h1>Hello Photino!</h1>",
+                //StartString = "<h1>Hello PhotinoX!</h1>",
 
                 //Window settings
                 IconFile = iconFile,
-                Title = $"My Photino Window {_windowNumber++}",
+                Title = $"My PhotinoX Window {_windowNumber++}",
                 //Chromeless = true,
                 //Transparent = true,
                 //FullScreen = true,
@@ -192,7 +192,7 @@ namespace Photino.HelloPhotino.TestBench
 
                 //Browser startup flags
                 BrowserControlInitParameters = browserInit,
-                UserAgent = "Custom Photino User Agent",
+                UserAgent = "Custom PhotinoX User Agent",
                 MediaAutoplayEnabled = true,
                 FileSystemAccessEnabled = true,
                 WebSecurityEnabled = true,

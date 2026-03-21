@@ -28,7 +28,7 @@ class Program
         Console.WriteLine($"Serving React app at {appUrl}");
 
         // Window title declared here for visibility
-        string windowTitle = "Photino.React Demo App";
+        string windowTitle = "PhotinoX.React Demo App";
 
         // Creating a new PhotinoWindow instance with the fluent API
         var window = new PhotinoWindow()

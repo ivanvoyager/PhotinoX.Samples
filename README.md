@@ -1,42 +1,101 @@
-## <span>NEXT PHOTINO FEATURES POLL</span>
-Hello Photino Community! We have a new poll question, regarding where and how you use Photino:
+# PhotinoX.Samples
 
-[PHOTINO USAGE POLL](https://github.com/tryphotino/photino.NET/discussions/172)
+[![Build](https://github.com/ivanvoyager/PhotinoX.Samples/actions/workflows/build.yml/badge.svg)](https://github.com/ivanvoyager/PhotinoX.Samples/actions/workflows/build.yml)
+[![License](https://img.shields.io/github/license/ivanvoyager/PhotinoX.Samples?label=license)](https://github.com/ivanvoyager/PhotinoX.Samples/blob/master/LICENSE)
 
+Sample projects showcasing **PhotinoX** — a lightweight, cross‑platform framework for building native desktop apps using Web UI technologies (Blazor, React, Vue, Angular, or plain HTML/JS).
+PhotinoX uses OS‑native WebView engines:
+- **Windows**: WebView2
+- **macOS**: WKWebView
+- **Linux**: WebKitGTK 4.1
 
-# Build native, cross-platform desktop apps
+> **Note:** `PhotinoX.Samples` is an independent fork of [tryphotino/photino.Samples](https://github.com/tryphotino/photino.Samples) under the Apache‑2.0 license and is **not affiliated** with the original project or organization.
 
-Photino is a lightweight open-source framework for building native,  
-cross-platform desktop applications with Web UI technology.
+## What is PhotinoX?
 
-Photino enables developers to use fast, natively compiled languages like C#, C++, Java and more. Use your favorite development frameworks like .NET, and build desktop apps with Web UI frameworks, like Blazor, React, Angular, Vue, etc.!
+`PhotinoX` is a lightweight, open‑source platform for building native desktop applications using modern **Web UI** stacks.
+It keeps application size small and memory usage low by depending on the system’s built‑in **WebView** engines (instead of bundling Chromium).
 
-Photino uses the OSs built-in WebKit-based browser control for Windows, macOS and Linux.
-Photino is the lightest cross-platform framework. Compared to Electron, a Photino app is up to 110 times smaller! And it uses far less system memory too!
+Core packages:
+- [**PhotinoX**](https://github.com/ivanvoyager/PhotinoX) (.NET wrapper)
+- [**PhotinoX.Native**](https://github.com/ivanvoyager/PhotinoX.Native) (native binaries for Windows/macOS/Linux)
+- [**PhotinoX.Blazor**](https://github.com/ivanvoyager/PhotinoX.Blazor) (Blazor integration)
+- [**PhotinoX.Server**](https://github.com/ivanvoyager/PhotinoX.Server) (optional static‑file server to avoid CORS/ESM issues)
 
-# Samples
+## Samples included
 
-This repo contains samples for Photino projects using the following Web Frameworks:
+This repository contains examples using a variety of frontend technologies:
 
-* Vue.JS
-* Angular
-* React
-  
-This repo also contains these samples
+### Web frameworks
 
-* Plain vanilla html/css/js.
-* WebAPI for local communication
-* gRPC for local communication
-* 3D graphics using 3d.js
-* 3D graphics with 3d.js and React
-* A TestBench for .NET with WebAPI, OS calls, PowerShell calls, etc.
-* Multi-Window
-* Static File Server (use to prevent CORS issues)
+- **Vue.js**
+- **React**
+- **Angular**
 
-Contribute to this project if you would like to add additional support for frameworks currently not supported by Photino.
-If you would like to start working with Photino and a particular supported framework, you can either start with using one of the sample projects, or check out the [Visual Studio Project Templates](https://docs.tryphotino.io/Photino-VSExtension) or [dotnet CLI / VS Code tempaltes](https://docs.tryphotino.io/Photino-VSCodeTemplates).
+### Other sample types
 
-# Troubleshooting
+- Plain HTML/CSS/JS
+- WebAPI local communication
+- gRPC local communication
+- 3D graphics using Three.js
+- 3D graphics with React + Three.js
+- Multi‑window example
+- Static File Server sample (useful for ESM/CORS limitations)
+- TestBench (WebAPI, OS calls, PowerShell calls, etc.)
 
-If you experience issues building the sample projects, first make sure you have restored the required Photino Nuget Packages, and that you're building for x64 or ARM64, and not x86.
-If you are on Windows, make sure Microsoft Edge Dev is installed: <https://www.microsoftedgeinsider.com/en-us/download>.
+Each folder starting with `Photino.HelloPhotino.*` is a self‑contained sample project.
+
+## Tooling
+
+The `tools/` directory provides convenience scripts for building and running the SPA samples.
+
+### SPA build modes
+- `build-all-spa.cmd` – production build (`npm ci`)
+- `build-all-spa-clean.cmd` – clean + production build
+- `build-all-spa-restore-install.cmd` – development build (`npm install`)
+
+Use `npm ci` for reproducible builds,  
+Use `npm install` for local development or when modifying the frontend code.
+
+### Run SPA samples (development)
+- `run-dev.cmd -List` — list detected SPA projects  
+- `run-dev.cmd -Project <Name> -Port <port>` — start dev server + PhotinoX host  
+- Shorthand launchers:
+  - `run-dev-Photino.HelloPhotino.React.cmd`
+  - `run-dev-Photino.HelloPhotino.Vue.cmd`
+  - `run-dev-Photino.HelloPhotino.Angular.cmd`
+  - `run-dev-Photino.HelloPhotino.3d.React.cmd`
+
+### Run non‑SPA samples
+- `run-grpc.cmd`
+- `run-grpc-Photino.HelloPhotino.GRpc.cmd`
+
+These scripts are optional but greatly simplify both development (npm dev servers) and production builds.
+
+## Requirements
+
+- **.NET**: 8, 9, or 10
+- Node.js + npm (for SPA samples)
+- **Windows**: WebView2 Runtime
+- **macOS**: WKWebView (built-in)
+- **Linux**: WebKitGTK 4.1 (runtime + dev packages)
+
+## Troubleshooting
+
+- Ensure **NuGet packages** are restored (PhotinoX.*, etc.)
+- Build for **x64** or **ARM64**, not x86
+- For SPA samples:
+  - Use `npm install` for development inside each sample folder
+  - Use `npm ci` when running the production build scripts (`build-all-spa*.cmd`)
+  - Ensure assets are served over HTTP (`PhotinoX.Server`) when needed
+
+On Windows, ensure the **WebView2 Runtime** is installed.
+Most modern Windows versions include it, but clean or corporate installations may not.
+
+## Contributing
+
+Issues and PRs are welcome. Keep PRs focused, minimal, and consistent with the rest of PhotinoX.
+
+## License
+
+PhotinoX.Samples is licensed under **Apache‑2.0**.

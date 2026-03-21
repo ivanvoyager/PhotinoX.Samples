@@ -39,7 +39,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Photino.NET" Version="3.1.18" />
+    <PackageReference Include="PhotinoX" Version="4.1.0" />
   </ItemGroup>
 
   <ItemGroup>

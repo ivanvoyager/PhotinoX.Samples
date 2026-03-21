@@ -18,7 +18,7 @@ namespace HelloPhotino.GRpc
             CreateHostBuilder(args).Build().RunAsync();
 
             // Window title declared here for visibility
-            string windowTitle = "Photino for .NET, gRPC enabled";
+            string windowTitle = "PhotinoX, gRPC enabled";
 
             // Creating a new PhotinoWindow instance with the fluent API
             var window = new PhotinoWindow()

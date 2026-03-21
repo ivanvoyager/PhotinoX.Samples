@@ -1,5 +1,5 @@
 ## Getting Started with HelloPhotino.Vue
-This sample demonstrates how to create a basic Vue starter app in a Photino.NET application. It utilizes Photino.NET.Server which serves (often bundled) UI files from a local ASP.NET server. This gets around issues with serving JavaScript modules, bundles, and other resources from static files and allows the UI to make standard service calls to the .NET back end if desired.
+This sample demonstrates how to create a basic Vue starter app in a PhotinoX application. It utilizes PhotinoX.Server which serves (often bundled) UI files from a local ASP.NET server. This gets around issues with serving JavaScript modules, bundles, and other resources from static files and allows the UI to make standard service calls to the .NET back end if desired.
 
 ## Development
 ### User Interface
@@ -34,5 +34,5 @@ After doing a production build of the user interface and copying the resulting o
 dotnet build -c Release
 ```
 
-### Photino.NET.Server
-In release mode, the UI is served from ASP.NET. Photino.NET.Server serves files from either embedded resources (built into the .NET assembly) or from the file system. In this sample, we placed the wwwroot folder in the Resources folder. All files in the Resources folder are embedded into the .NET assembly and don't need to be distributed separately. When run, the server will create a wwwroot folder structure in the output folder. Any files placed in these folders will override the embedded resources. Alternately, you may choose to move the wwwroot folder to the root of the project and set the files to be copied to the output folder. This is how many of the simpler examples are configured. Or you can use both methods. The choice is yours.
+### PhotinoX.Server
+In release mode, the UI is served from ASP.NET. PhotinoX.Server serves files from either embedded resources (built into the .NET assembly) or from the file system. In this sample, we placed the wwwroot folder in the Resources folder. All files in the Resources folder are embedded into the .NET assembly and don't need to be distributed separately. When run, the server will create a wwwroot folder structure in the output folder. Any files placed in these folders will override the embedded resources. Alternately, you may choose to move the wwwroot folder to the root of the project and set the files to be copied to the output folder. This is how many of the simpler examples are configured. Or you can use both methods. The choice is yours.
