@@ -47,14 +47,14 @@ Each folder starting with `Photino.HelloPhotino.*` is a self‑contained sample 
 
 ## Tooling
 
-The `tools/` directory provides convenience scripts for building and running the SPA samples.
+The `tools/` directory contains convenience scripts for building and running the samples.
 
 ### SPA build modes
 - `build-all-spa.cmd` – production build (`npm ci`)
 - `build-all-spa-clean.cmd` – clean + production build
 - `build-all-spa-restore-install.cmd` – development build (`npm install`)
 
-Use `npm ci` for reproducible builds,  
+Use `npm ci` for reproducible builds.  
 Use `npm install` for local development or when modifying the frontend code.
 
 ### Run SPA samples (development)
@@ -66,11 +66,15 @@ Use `npm install` for local development or when modifying the frontend code.
   - `run-dev-Photino.HelloPhotino.Angular.cmd`
   - `run-dev-Photino.HelloPhotino.3d.React.cmd`
 
-### Run non‑SPA samples
-- `run-grpc.cmd`
-- `run-grpc-Photino.HelloPhotino.GRpc.cmd`
+### Run pure .NET samples (no npm)
+- `run-dotnet-Photino.HelloPhotino.3d.cmd`
+- `run-dotnet-Photino.HelloPhotino.GRpc.cmd`
+- `run-dotnet-Photino.HelloPhotino.MultiWindow.cmd`
+- `run-dotnet-Photino.HelloPhotino.NET.cmd`
+- `run-dotnet-Photino.HelloPhotino.StaticFileServer.cmd`
+- `run-dotnet-Photino.HelloPhotino.TestBench.cmd`
 
-These scripts are optional but greatly simplify both development (npm dev servers) and production builds.
+These scripts are optional but greatly simplify both development (npm dev servers) and .NET‑only runs.
 
 ## Requirements
 

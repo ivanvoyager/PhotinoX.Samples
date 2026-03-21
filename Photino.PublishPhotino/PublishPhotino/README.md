@@ -78,23 +78,23 @@ bin/Release/net8.0/publish
 ├── runtimes
 │   ├── linux-arm64
 │   │   └── native
-│   │       └── Photino.Native.so
+│   │       └── PhotinoX.Native.so
 │   ├── linux-x64
 │   │   └── native
-│   │       └── Photino.Native.so
+│   │       └── PhotinoX.Native.so
 │   ├── osx-arm64
 │   │   └── native
-│   │       └── Photino.Native.dylib
+│   │       └── PhotinoX.Native.dylib
 │   ├── osx-x64
 │   │   └── native
-│   │       └── Photino.Native.dylib
+│   │       └── PhotinoX.Native.dylib
 │   ├── win-arm64
 │   │   └── native
-│   │       ├── Photino.Native.dll
+│   │       ├── PhotinoX.Native.dll
 │   │       └── WebView2Loader.dll
 │   └── win-x64
 │       └── native
-│           ├── Photino.Native.dll
+│           ├── PhotinoX.Native.dll
 │           └── WebView2Loader.dll
 └── wwwroot
     └── index.html
