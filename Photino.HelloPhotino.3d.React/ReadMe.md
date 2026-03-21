@@ -1,5 +1,5 @@
 ﻿## Getting Started with HelloPhotino.3d.React Sample
-This sample demonstrates how to create a 3D Photino.NET application using React and Three.js. The sample uses the Photino.NET framework to create a desktop application that hosts a React application that uses Three.js to render a 3D scene.
+This sample demonstrates how to create a 3D PhotinoX application using React and Three.js. The sample uses the PhotinoX framework to create a desktop application that hosts a React application that uses Three.js to render a 3D scene.
 
 ## Development
 ### User Interface

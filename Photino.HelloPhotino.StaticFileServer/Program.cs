@@ -17,7 +17,7 @@ class Program
             .RunAsync();
 
         // Window title declared here for visibility
-        string windowTitle = "Photino StaticFileServer";
+        string windowTitle = "PhotinoX StaticFileServer";
 
         // Creating a new PhotinoWindow instance with the fluent API
         var window = new PhotinoWindow()

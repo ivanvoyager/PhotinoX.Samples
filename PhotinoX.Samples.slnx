@@ -1,0 +1,12 @@
+<Solution>
+  <Project Path="Photino.HelloPhotino.3d.React/HelloPhotino.3d.React.csproj" />
+  <Project Path="Photino.HelloPhotino.3d/HelloPhotino.3d.csproj" />
+  <Project Path="Photino.HelloPhotino.Angular/HelloPhotino.Angular.csproj" />
+  <Project Path="Photino.HelloPhotino.GRpc/HelloPhotino.GRpc.csproj" />
+  <Project Path="Photino.HelloPhotino.MultiWindow/HelloPhotino.MultiWindow.csproj" />
+  <Project Path="Photino.HelloPhotino.React/HelloPhotino.React.csproj" />
+  <Project Path="Photino.HelloPhotino.StaticFileServer/HelloPhotino.StaticFileServer.csproj" />
+  <Project Path="Photino.HelloPhotino.TestBench/HelloPhotino.TestBench.csproj" />
+  <Project Path="Photino.HelloPhotino.Vue/HelloPhotino.Vue.csproj" />
+  <Project Path="Photino.HelloPhotino.NET/HelloPhotinoX.csproj" />
+</Solution>

@@ -27,7 +27,7 @@ class Program
         Console.WriteLine($"Serving Vue app at {appUrl}");
 
         // Window title declared here for visibility
-        string windowTitle = "Photino.Vue Demo App";
+        string windowTitle = "PhotinoX.Vue Demo App";
 
         // Creating a new PhotinoWindow instance with the fluent API
         var window = new PhotinoWindow()

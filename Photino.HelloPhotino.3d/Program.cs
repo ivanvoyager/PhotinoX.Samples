@@ -11,7 +11,7 @@ namespace HelloPhotino.ThreeD
         static void Main(string[] args)
         {
             // Window title declared here for visibility
-            string windowTitle = "Photino 3D Pong";
+            string windowTitle = "PhotinoX 3D Pong";
 
             // Creating a new PhotinoWindow instance with the fluent API
             var window = new PhotinoWindow()

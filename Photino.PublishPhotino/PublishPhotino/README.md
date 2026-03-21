@@ -1,10 +1,10 @@
-# Cross-Platform Publishing with Photino.NET: A Comprehensive Guide
+# Cross-Platform Publishing with PhotinoX: A Comprehensive Guide
 
-Developing applications that are seamlessly functional across all major operating systems is a significant time-saver in software development. However, the process of deploying these applications introduces a whole new set of challenges. This comprehensive guide is designed to demystify the process of publishing your Photino.NET applications on Windows, macOS, and Linux.
+Developing applications that are seamlessly functional across all major operating systems is a significant time-saver in software development. However, the process of deploying these applications introduces a whole new set of challenges. This comprehensive guide is designed to demystify the process of publishing your PhotinoX applications on Windows, macOS, and Linux.
 
 ## TL;DR
 
-You can use this project as a starting point for your Photino.NET application. It contains a `*.csproj` file with the necessary settings to create a single file executable for Windows, macOS, and Linux. You can modify and run the `publish.sh` script to create packages for Windows, macOS, and Linux.
+You can use this project as a starting point for your PhotinoX application. It contains a `*.csproj` file with the necessary settings to create a single file executable for Windows, macOS, and Linux. You can modify and run the `publish.sh` script to create packages for Windows, macOS, and Linux.
 
 ```bash
 # Chnge dir to `publish`
@@ -19,7 +19,7 @@ The resulting files will be placed in the `publish/output` directory. You can th
 
 ## Publishing is confusing, frustrating and cumbersome
 
-Publishing applications across different platforms is not a straightforward task. It involves understanding the packaging, distribution, and dependencies management for each operating system. This guide builds upon the foundation laid by the practical experiences of deploying an internal tool developed with Photino.NET, offering insights and strategies applicable to a broader scope of .NET applications.
+Publishing applications across different platforms is not a straightforward task. It involves understanding the packaging, distribution, and dependencies management for each operating system. This guide builds upon the foundation laid by the practical experiences of deploying an internal tool developed with PhotinoX, offering insights and strategies applicable to a broader scope of .NET applications.
 
 I had to limit the scope of this guide to publishing for the most common operating systems, if not just to keep my own sanity. Especially Linux has a wide variety of distributions and package managers, and I can't cover them all. But I will provide a starting point for you to find the right package manager for your application.
 
@@ -34,11 +34,11 @@ You may get away doing some of these task on (first) startup of your app. But es
 
 ### Pre-requisites: A Quick Primer
 
-Before diving into the details, ensure you have a basic understanding of Photino.NET, the .NET Command-Line Interface (CLI), and the significance of cross-platform compatibility. Familiarity with these tools and concepts will help you follow the subsequent sections with ease.
+Before diving into the details, ensure you have a basic understanding of PhotinoX, the .NET Command-Line Interface (CLI), and the significance of cross-platform compatibility. Familiarity with these tools and concepts will help you follow the subsequent sections with ease.
 
 For readability's sake I will show all examples using the .NET CLI and Unix Shell commands. But equivalent commands and procedures can be used for Visual Studio and Powershell as well.
 
-## Publishing Photino.NET applications
+## Publishing PhotinoX applications
 
 After you created a new project using one of the Photino templates, your `*.csproj` file will look something like Listing 1 below. Based on this we'll explore how to configure and publish your application for each target platform.
 
@@ -53,7 +53,7 @@ After you created a new project using one of the Photino templates, your `*.cspr
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Photino.NET" Version="3.1.18" />
+    <PackageReference Include="PhotinoX" Version="4.1.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -63,13 +63,13 @@ After you created a new project using one of the Photino templates, your `*.cspr
 </Project>
 ```
 
-> Listing 1: A typical Photino.NET project file
+> Listing 1: A typical PhotinoX project file
 
 If we publish the project using these settings with `dotnet publish`, we generate a publish folder with the contents as seen in Listing 2.
 
 ```
 bin/Release/net8.0/publish
-├── Photino.NET.dll
+├── PhotinoX.dll
 ├── PublishPhotino
 ├── PublishPhotino.deps.json
 ├── PublishPhotino.dll
@@ -146,7 +146,7 @@ This is quite far from the single file executable we want to achieve. We can cha
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Photino.NET" Version="3.1.18" />
+    <PackageReference Include="PhotinoX" Version="4.1.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -319,7 +319,7 @@ debian-build
 
 ### The `control` file
 
-The `control` file with the content as seen in Listing 10 will be used when installing the `.deb` package to provide metadata about the package and the dependencies. Photino requires certain, commonly found dependencies. Despite them being commonly installed already, you will want to make sure that these are installed on the target system. The dependencies as listed in Listing 10, are valid for Photino.NET 2.6.0.
+The `control` file with the content as seen in Listing 10 will be used when installing the `.deb` package to provide metadata about the package and the dependencies. Photino requires certain, commonly found dependencies. Despite them being commonly installed already, you will want to make sure that these are installed on the target system. The dependencies as listed in Listing 10, are valid for PhotinoX 4.1.0.
 
 ```
 Source: PublishPhotino
@@ -482,6 +482,6 @@ Here's a starting point for knowing your package managers, list of Software Pack
 
 ## Conclusion
 
-Cross-platform publishing, while challenging, offers immense rewards in terms of reach and user engagement. By adhering to the guidelines and best practices outlined in this guide, you'll be well-equipped to deploy your Photino.NET applications across Windows, macOS, and Linux with confidence. Happy coding, and may your applications run seamlessly across all platforms!
+Cross-platform publishing, while challenging, offers immense rewards in terms of reach and user engagement. By adhering to the guidelines and best practices outlined in this guide, you'll be well-equipped to deploy your PhotinoX applications across Windows, macOS, and Linux with confidence. Happy coding, and may your applications run seamlessly across all platforms!
 
 Remember, the journey of software development and deployment is a continuous learning process. Stay curious, experiment, and never hesitate to seek out new strategies and insights.
