@@ -1,6 +1,6 @@
 ﻿using Photino.NET;
 
-namespace HelloWorldApp
+namespace HelloPhotino.MultiWindow
 {
     //NOTE: To hide the console window, go to the project properties and change the Output Type to Windows Application.
     // Or edit the .csproj file and change the <OutputType> tag from "WinExe" to "Exe".
@@ -24,9 +24,9 @@ namespace HelloWorldApp
                 .WaitForClose();
         }
 
-        static void CloseWindowMessageDelegate(object sender, string message)
+        static void CloseWindowMessageDelegate(object? sender, string message)
         {
-            var window = (PhotinoWindow)sender;
+            var window = (PhotinoWindow)sender!;
 
             if (message == "close-window")
             {
@@ -35,9 +35,9 @@ namespace HelloWorldApp
             }
         }
 
-        static void NewWindowMessageDelegate(object sender, string message)
+        static void NewWindowMessageDelegate(object? sender, string message)
         {
-            var parent = (PhotinoWindow)sender;
+            var parent = (PhotinoWindow)sender!;
 
             if (message == "random-window")
             {

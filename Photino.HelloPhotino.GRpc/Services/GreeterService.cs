@@ -1,8 +1,9 @@
 using Grpc.Core;
+using GrpcService1;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
-namespace GrpcService1
+namespace HelloPhotino.GRpc.Services
 {
     public class GreeterService : Greeter.GreeterBase
     {

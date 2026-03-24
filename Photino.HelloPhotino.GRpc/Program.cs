@@ -31,7 +31,7 @@ namespace HelloPhotino.GRpc
                 // Users can resize windows by default.
                 // Let's make this one fixed instead.
                 .SetResizable(false)
-                .RegisterCustomSchemeHandler("app", (object sender, string scheme, string url, out string contentType) =>
+                .RegisterCustomSchemeHandler("app", (sender, scheme, url, out contentType) =>
                 {
                     contentType = "text/javascript";
                     return new MemoryStream(Encoding.UTF8.GetBytes(@"
@@ -46,9 +46,9 @@ namespace HelloPhotino.GRpc
                 // PhotinoWindow was instantiated by calling a registration 
                 // method like the following RegisterWebMessageReceivedHandler.
                 // This could be added in the PhotinoWindowOptions if preferred.
-                .RegisterWebMessageReceivedHandler((object sender, string message) =>
+                .RegisterWebMessageReceivedHandler((sender, message) =>
                 {
-                    var window = (PhotinoWindow)sender;
+                    var window = (PhotinoWindow)sender!;
 
                     // The message argument is coming in from sendMessage.
                     // "window.external.sendMessage(message: string)"

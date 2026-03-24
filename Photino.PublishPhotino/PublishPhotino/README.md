@@ -53,7 +53,7 @@ After you created a new project using one of the Photino templates, your `*.cspr
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="PhotinoX" Version="4.1.0" />
+    <PackageReference Include="PhotinoX" Version="4.1.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -146,7 +146,7 @@ This is quite far from the single file executable we want to achieve. We can cha
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="PhotinoX" Version="4.1.0" />
+    <PackageReference Include="PhotinoX" Version="4.1.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -477,7 +477,7 @@ Here's a starting point for knowing your package managers, list of Software Pack
 
 ![xkcd.com/927](https://imgs.xkcd.com/comics/standards.png)
 
-> https://xkcd.com/927/\
+> https://xkcd.com/927/
 > How standards proliferate.
 
 ## Conclusion

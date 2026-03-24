@@ -1,4 +1,8 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="Directory.Build.props" />
+    <File Path="README.md" />
+  </Folder>
   <Project Path="Photino.HelloPhotino.3d.React/HelloPhotino.3d.React.csproj" />
   <Project Path="Photino.HelloPhotino.3d/HelloPhotino.3d.csproj" />
   <Project Path="Photino.HelloPhotino.Angular/HelloPhotino.Angular.csproj" />

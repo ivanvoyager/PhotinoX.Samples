@@ -16,7 +16,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="PhotinoX" Version="4.1.0" />
+    <PackageReference Include="PhotinoX" Version="4.1.1" />
   </ItemGroup>
 
 </Project>

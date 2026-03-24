@@ -1,4 +1,4 @@
-﻿using GrpcService1;
+﻿using HelloPhotino.GRpc.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;

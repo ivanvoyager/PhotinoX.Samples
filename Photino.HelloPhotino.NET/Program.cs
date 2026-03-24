@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Text;
 
-namespace HelloPhotinoApp
+namespace HelloPhotinoX
 {
     //NOTE: To hide the console window, go to the project properties and change the Output Type to Windows Application.
     // Or edit the .csproj file and change the <OutputType> tag from "WinExe" to "Exe".
@@ -25,7 +25,7 @@ namespace HelloPhotinoApp
                 // Users can resize windows by default.
                 // Let's make this one fixed instead.
                 .SetResizable(false)
-                .RegisterCustomSchemeHandler("app", (object sender, string scheme, string url, out string contentType) =>
+                .RegisterCustomSchemeHandler("app", (sender, scheme, url, out contentType) =>
                 {
                     contentType = "text/javascript";
                     return new MemoryStream(Encoding.UTF8.GetBytes(@"
@@ -40,9 +40,9 @@ namespace HelloPhotinoApp
                 // PhotinoWindow was instantiated by calling a registration 
                 // method like the following RegisterWebMessageReceivedHandler.
                 // This could be added in the PhotinoWindowOptions if preferred.
-                .RegisterWebMessageReceivedHandler((object sender, string message) =>
+                .RegisterWebMessageReceivedHandler((sender, message) =>
                 {
-                    var window = (PhotinoWindow)sender;
+                    var window = (PhotinoWindow)sender!;
 
                     // The message argument is coming in from sendMessage.
                     // "window.external.sendMessage(message: string)"

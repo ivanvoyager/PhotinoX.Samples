@@ -17,10 +17,10 @@ PhotinoX uses OS‑native WebView engines:
 It keeps application size small and memory usage low by depending on the system’s built‑in **WebView** engines (instead of bundling Chromium).
 
 Core packages:
-- [**PhotinoX**](https://github.com/ivanvoyager/PhotinoX) (.NET wrapper)
-- [**PhotinoX.Native**](https://github.com/ivanvoyager/PhotinoX.Native) (native binaries for Windows/macOS/Linux)
-- [**PhotinoX.Blazor**](https://github.com/ivanvoyager/PhotinoX.Blazor) (Blazor integration)
-- [**PhotinoX.Server**](https://github.com/ivanvoyager/PhotinoX.Server) (optional static‑file server to avoid CORS/ESM issues)
+- [**PhotinoX**](https://github.com/ivanvoyager/PhotinoX) .NET wrapper around the native layer.
+- [**PhotinoX.Native**](https://github.com/ivanvoyager/PhotinoX.Native) - native binaries for Windows/macOS/Linux.
+- [**PhotinoX.Blazor**](https://github.com/ivanvoyager/PhotinoX.Blazor) - Blazor integration for native desktop apps.
+- [**PhotinoX.Server**](https://github.com/ivanvoyager/PhotinoX.Server) - optional static-file server (avoids CORS/ESM issues).
 
 ## Samples included
 
@@ -80,9 +80,13 @@ These scripts are optional but greatly simplify both development (npm dev server
 
 - **.NET**: 8, 9, or 10
 - Node.js + npm (for SPA samples)
-- **Windows**: WebView2 Runtime
-- **macOS**: WKWebView (built-in)
-- **Linux**: WebKitGTK 4.1 (runtime + dev packages)
+- **Windows:** WebView2 Runtime  
+  Required component: **Microsoft.Web.WebView2** (Edge WebView2)  
+  https://learn.microsoft.com/microsoft-edge/webview2/
+- **macOS:** WKWebView (system WebKit)  
+  https://developer.apple.com/documentation/webkit/wkwebview/
+- **Linux:** WebKitGTK 4.1 (runtime + dev packages)  
+  https://webkitgtk.org/
 
 ## Troubleshooting
 
