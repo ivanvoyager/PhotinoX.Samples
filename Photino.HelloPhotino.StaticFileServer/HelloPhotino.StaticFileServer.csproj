@@ -26,8 +26,14 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="10.0.5" />
-    <PackageReference Include="PhotinoX" Version="4.1.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(PhotinoX_UseLocalProjects)' != 'true'">
     <PackageReference Include="PhotinoX.Server" Version="4.1.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(PhotinoX_UseLocalProjects)' == 'true'">
+    <ProjectReference Include="..\..\PhotinoX.Server\Photino.NET.Server\PhotinoX.Server.csproj" />
   </ItemGroup>
 
 </Project>

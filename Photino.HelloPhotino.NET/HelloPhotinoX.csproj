@@ -14,9 +14,5 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  
-  <ItemGroup>
-    <PackageReference Include="PhotinoX" Version="4.1.1" />
-  </ItemGroup>
 
 </Project>
