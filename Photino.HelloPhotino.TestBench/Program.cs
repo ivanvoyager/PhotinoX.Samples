@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.ComponentModel;
+using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Text;
 using Photino.NET;
@@ -125,6 +126,7 @@ namespace HelloPhotino.TestBench
                 .RegisterSizeChangedHandler(WindowSizeChanged)
                 .RegisterWebMessageReceivedHandler(MessageReceivedFromWindow)
                 .RegisterWindowClosingHandler(WindowClosing)
+                .RegisterWindowClosedHandler(WindowClosed)
                 .RegisterFocusInHandler(WindowFocusIn)
                 .RegisterFocusOutHandler(WindowFocusOut)
 
@@ -290,6 +292,7 @@ namespace HelloPhotino.TestBench
                     .RegisterSizeChangedHandler(WindowSizeChanged)
                     .RegisterWebMessageReceivedHandler(MessageReceivedFromWindow)
                     .RegisterWindowClosingHandler(WindowClosing)
+                    .RegisterWindowClosedHandler(WindowClosed)
 
                     .RegisterCustomSchemeHandler("app", AppCustomSchemeUsed)
 
@@ -515,9 +518,14 @@ namespace HelloPhotino.TestBench
             Log(sender, $"{nameof(WindowMinimized)} Callback Fired.");
         }
 
-        private static void WindowClosing(object? sender, EventArgs e)
+        private static void WindowClosing(object? sender, CancelEventArgs e)
         {
             Log(sender, "WindowClosing Callback Fired.");
+        }
+
+        private static void WindowClosed(object? sender, EventArgs e)
+        {
+            Log(sender, "WindowClosed Callback Fired.");
         }
 
         private static void WindowFocusIn(object? sender, EventArgs e)

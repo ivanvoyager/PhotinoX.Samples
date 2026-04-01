@@ -14,4 +14,13 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+
+  <ItemGroup Condition="'$(PhotinoX_UseLocalProjects)' != 'true'">
+    <PackageReference Include="PhotinoX" Version="4.2.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(PhotinoX_UseLocalProjects)' == 'true'">
+    <ProjectReference Include="..\..\PhotinoX\Photino.NET\PhotinoX.csproj" />
+  </ItemGroup>
+
 </Project>
