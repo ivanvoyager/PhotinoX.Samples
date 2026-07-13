@@ -1,34 +1,32 @@
-using Photino.NET;
-using Photino.NET.Server;
 using System.Drawing;
 using System.Text;
+using Photino.NET;
+using Photino.NET.Server;
 
 namespace HelloPhotino.Vue;
-//NOTE: To hide the console window, go to the project properties and change the Output Type to Windows Application.
-// Or edit the .csproj file and change the <OutputType> tag from "WinExe" to "Exe".
-class Program
+
+internal static class Program
 {
 #if DEBUG
-    public static bool IsDebugMode = true;
+    private const bool IsDebugMode = true;
 #else
-    public static bool IsDebugMode = false;
+    private const bool IsDebugMode = false;
 #endif
 
     [STAThread]
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
-        string appUrl = string.Empty;
+        string appUrl;
+
         if (IsDebugMode)
         {
-            // The appUrl is set to the local development server when in debug mode.
-            // This helps with hot reloading and debugging.
             appUrl = "http://localhost:5173";
-            Console.WriteLine($"**You are in Debug mode. Make sure your local development server is running on {appUrl}");
+            Console.WriteLine($"Debug mode: make sure the local development server is running at {appUrl}.");
         }
         else
         {
-            PhotinoServer
-                .CreateStaticFileServer(args, out string baseUrl)
+            _ = PhotinoServer
+                .CreateStaticFileServer(args, out var baseUrl)
                 .RunAsync();
 
             appUrl = $"{baseUrl}/index.html";
@@ -36,50 +34,35 @@ class Program
 
         Console.WriteLine($"Serving Vue app at {appUrl}");
 
-        // Window title declared here for visibility
-        string windowTitle = "PhotinoX.Vue Demo App";
+        const string windowTitle = "PhotinoX.Vue Demo App";
 
-        // Creating a new PhotinoWindow instance with the fluent API
         var window = new PhotinoWindow()
             .SetTitle(windowTitle)
-            // Resize to a percentage of the main monitor work area
-            //.Resize(50, 50, "%")
             .SetUseOsDefaultSize(false)
             .SetSize(new Size(800, 600))
-            // Center window in the middle of the screen
             .Center()
-            // Users can resize windows by default.
-            // Let's make this one fixed instead.
             .SetResizable(true)
-            .RegisterCustomSchemeHandler("app", (sender, scheme, url, out contentType) =>
+            .RegisterCustomSchemeHandler("app", (_, _, _, out contentType) =>
             {
                 contentType = "text/javascript";
-                return new MemoryStream(Encoding.UTF8.GetBytes(@"
-                        (() =>{
-                            window.setTimeout(() => {
-                                alert(`🎉 Dynamically inserted JavaScript.`);
-                            }, 1000);
-                        })();
-                    "));
+
+                return new MemoryStream(Encoding.UTF8.GetBytes("""
+                    (() => {
+                        window.setTimeout(() => {
+                            alert(`🎉 Dynamically inserted JavaScript.`);
+                        }, 1000);
+                    })();
+                    """));
             })
-            // Most event handlers can be registered after the
-            // PhotinoWindow was instantiated by calling a registration 
-            // method like the following RegisterWebMessageReceivedHandler.
-            // This could be added in the PhotinoWindowOptions if preferred.
             .RegisterWebMessageReceivedHandler((sender, message) =>
             {
                 var window = (PhotinoWindow)sender!;
+                var response = $"Received message: \"{message}\"";
 
-                // The message argument is coming in from sendMessage.
-                // "window.external.sendMessage(message: string)"
-                string response = $"Received message: \"{message}\"";
-
-                // Send a message back the to JavaScript event handler.
-                // "window.external.receiveMessage(callback: Function)"
                 window.SendWebMessage(response);
             })
-            .Load(appUrl); // Can be used with relative path strings or "new URI()" instance to load a website.
- 
-        window.WaitForClose(); // Starts the application event loop
+            .Load(appUrl);
+
+        window.Show();
     }
 }

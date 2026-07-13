@@ -1,70 +1,54 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using System.Drawing;
+using System.Text;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Photino.NET;
-using System.Drawing;
-using System.Text;
 
-namespace HelloPhotino.GRpc
+namespace HelloPhotino.GRpc;
+
+//https://github.com/grpc/grpc-web/tree/master/net/grpc/gateway/examples/helloworld#write-client-code
+internal static class Program
 {
-    //NOTE: To hide the console window, go to the project properties and change the Output Type to Windows Application.
-    // Or edit the .csproj file and change the <OutputType> tag from "WinExe" to "Exe".
-
-    //https://github.com/grpc/grpc-web/tree/master/net/grpc/gateway/examples/helloworld#write-client-code
-    class Program
+    [STAThread]
+    private static void Main(string[] args)
     {
-        [STAThread]
-        public static void Main(string[] args)
-        {
-            CreateHostBuilder(args).Build().RunAsync();
+        _ = CreateHostBuilder(args).Build().RunAsync();
 
-            // Window title declared here for visibility
-            string windowTitle = "PhotinoX, gRPC enabled";
+        const string windowTitle = "PhotinoX, gRPC enabled";
 
-            // Creating a new PhotinoWindow instance with the fluent API
-            var window = new PhotinoWindow()
-                .SetTitle(windowTitle)
-                // Resize to a percentage of the main monitor work area
-                .SetUseOsDefaultSize(false)
-                .SetSize(new Size(800, 400))
-                // Center window in the middle of the screen
-                .Center()
-                // Users can resize windows by default.
-                // Let's make this one fixed instead.
-                .SetResizable(false)
-                .RegisterCustomSchemeHandler("app", (sender, scheme, url, out contentType) =>
-                {
-                    contentType = "text/javascript";
-                    return new MemoryStream(Encoding.UTF8.GetBytes(@"
-                        (() =>{
-                            window.setTimeout(() => {
-                                alert(`🎉 Dynamically inserted JavaScript.`);
-                            }, 1000);
-                        })();
-                    "));
-                })
-                // Most event handlers can be registered after the
-                // PhotinoWindow was instantiated by calling a registration 
-                // method like the following RegisterWebMessageReceivedHandler.
-                // This could be added in the PhotinoWindowOptions if preferred.
-                .RegisterWebMessageReceivedHandler((sender, message) =>
-                {
-                    var window = (PhotinoWindow)sender!;
+        var window = new PhotinoWindow()
+            .SetTitle(windowTitle)
+            .SetUseOsDefaultSize(false)
+            .SetSize(new Size(800, 400))
+            .Center()
+            .SetResizable(false)
+            .RegisterCustomSchemeHandler("app", (_, _, _, out contentType) =>
+            {
+                contentType = "text/javascript";
 
-                    // The message argument is coming in from sendMessage.
-                    // "window.external.sendMessage(message: string)"
-                    string response = $"Received message: \"{message}\"";
+                return new MemoryStream(Encoding.UTF8.GetBytes("""
+                    (() => {
+                        window.setTimeout(() => {
+                            alert(`🎉 Dynamically inserted JavaScript.`);
+                        }, 1000);
+                    })();
+                    """));
+            })
+            .RegisterWebMessageReceivedHandler((sender, message) =>
+            {
+                var window = (PhotinoWindow)sender!;
+                var response = $"Received message: \"{message}\"";
 
-                    // Send a message back the to JavaScript event handler.
-                    // "window.external.receiveMessage(callback: Function)"
-                    window.SendWebMessage(response);
-                })
-                .Load("wwwroot/index.html"); // Can be used with relative path strings or "new URI()" instance to load a website.
+                window.SendWebMessage(response);
+            })
+            .Load("wwwroot/index.html");
 
-            window.WaitForClose();
-        }
+        window.Show();
+    }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+    private static IHostBuilder CreateHostBuilder(string[] args)
+    {
+        return Host.CreateDefaultBuilder(args)
             .ConfigureWebHostDefaults(webBuilder =>
             {
                 webBuilder.UseStartup<Startup>();

@@ -1,72 +1,67 @@
 ﻿using Photino.NET;
 
-namespace HelloPhotino.MultiWindow
+namespace HelloPhotino.MultiWindow;
+
+internal static class Program
 {
-    //NOTE: To hide the console window, go to the project properties and change the Output Type to Windows Application.
-    // Or edit the .csproj file and change the <OutputType> tag from "WinExe" to "Exe".
+    private static readonly Random s_random = new();
+    private static int s_childCount;
 
-    class Program
+    [STAThread]
+    private static void Main()
     {
-        static int _childCount;
+        new PhotinoWindow()
+            .SetTitle("Main Window")
+            .RegisterWebMessageReceivedHandler(CloseWindowMessageDelegate)
+            .RegisterWebMessageReceivedHandler(NewWindowMessageDelegate)
+            .SetUseOsDefaultSize(false)
+            .SetWidth(600)
+            .SetHeight(400)
+            .Center()
+            .Load("wwwroot/main.html")
+            .Show();
+    }
 
-        [STAThread]
-        static void Main(string[] args)
-        {
-            new PhotinoWindow()
-                .SetTitle("Main Window")
-                .RegisterWebMessageReceivedHandler(CloseWindowMessageDelegate)
-                .RegisterWebMessageReceivedHandler(NewWindowMessageDelegate)
-                .SetUseOsDefaultSize(false)
-                .SetWidth(600)
-                .SetHeight(400)
-                .Center()
-                .Load("wwwroot/main.html")
-                .WaitForClose();
-        }
+    private static void CloseWindowMessageDelegate(object? sender, string message)
+    {
+        if (message != "close-window")
+            return;
 
-        static void CloseWindowMessageDelegate(object? sender, string message)
-        {
-            var window = (PhotinoWindow)sender!;
+        var window = (PhotinoWindow)sender!;
 
-            if (message == "close-window")
-            {
-                Console.WriteLine($"Closing \"{window.Title}\".");
-                window.Close();
-            }
-        }
+        Console.WriteLine($"Closing \"{window.Title}\".");
+        window.Close();
+    }
 
-        static void NewWindowMessageDelegate(object? sender, string message)
-        {
-            var parent = (PhotinoWindow)sender!;
+    private static void NewWindowMessageDelegate(object? sender, string message)
+    {
+        if (message != "random-window")
+            return;
 
-            if (message == "random-window")
-            {
-                var random = new Random();
+        var parent = (PhotinoWindow)sender!;
 
-                int workAreaWidth = parent.MainMonitor.WorkArea.Width;
-                int workAreaHeight = parent.MainMonitor.WorkArea.Height;
+        var workAreaWidth = parent.MainMonitor.WorkArea.Width;
+        var workAreaHeight = parent.MainMonitor.WorkArea.Height;
 
-                int width = random.Next(400, 800);
-                int height = (int)Math.Round(width * 0.625, 0);
+        var width = s_random.Next(400, 800);
+        var height = (int)Math.Round(width * 0.625, 0);
 
-                int offset = 20;
-                int left = random.Next(offset, workAreaWidth - width - offset);
-                int top = random.Next(offset, workAreaHeight - height - offset);
+        const int offset = 20;
+        var left = s_random.Next(offset, workAreaWidth - width - offset);
+        var top = s_random.Next(offset, workAreaHeight - height - offset);
 
-                _childCount++;
+        s_childCount++;
 
-                new PhotinoWindow(parent)
-                    .SetTitle($"Random Window ({_childCount})")
-                    .SetUseOsDefaultSize(false)
-                    .SetHeight(height)
-                    .SetWidth(width)
-                    .SetUseOsDefaultLocation(false)
-                    .SetTop(top)
-                    .SetLeft(left)
-                    .RegisterWebMessageReceivedHandler(CloseWindowMessageDelegate)
-                    .Load("wwwroot/random.html")
-                    .WaitForClose();
-            }
-        }
+        new PhotinoWindow(parent)
+            .SetTitle($"Random Window ({s_childCount})")
+            .SetUseOsDefaultSize(false)
+            .SetHeight(height)
+            .SetWidth(width)
+            .SetUseOsDefaultLocation(false)
+            .SetTop(top)
+            .SetLeft(left)
+            .RegisterWebMessageReceivedHandler(CloseWindowMessageDelegate)
+            .Load("wwwroot/random.html")
+            .Show();
     }
 }

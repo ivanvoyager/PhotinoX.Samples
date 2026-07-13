@@ -1,32 +1,23 @@
-﻿using Photino.NET;
-using System.Drawing;
+﻿using System.Drawing;
+using Photino.NET;
 
-namespace HelloPhotino.ThreeD
+namespace HelloPhotino.ThreeD;
+
+internal static class Program
 {
-    //NOTE: To hide the console window, go to the project properties and change the Output Type to Windows Application.
-    // Or edit the .csproj file and change the <OutputType> tag from "WinExe" to "Exe".
-    class Program
-    { 
-        [STAThread]
-        static void Main(string[] args)
-        {
-            // Window title declared here for visibility
-            string windowTitle = "PhotinoX 3D Pong";
+    [STAThread]
+    private static void Main()
+    {
+        const string windowTitle = "PhotinoX 3D Pong";
 
-            // Creating a new PhotinoWindow instance with the fluent API
-            var window = new PhotinoWindow()
-                .SetTitle(windowTitle)
-                // Resize to a percentage of the main monitor work area
-                .SetUseOsDefaultSize(false)
-                .SetSize(new Size(1024, 800))
-                // Center window in the middle of the screen
-                .Center()
-                // Users can resize windows by default.
-                // Let's make this one fixed instead.
-                .SetResizable(false)
-                .Load("wwwroot/index.html"); // Can be used with relative path strings or "new URI()" instance to load a website.
+        var window = new PhotinoWindow()
+            .SetTitle(windowTitle)
+            .SetUseOsDefaultSize(false)
+            .SetSize(new Size(1024, 800))
+            .Center()
+            .SetResizable(false)
+            .Load("wwwroot/index.html");
 
-            window.WaitForClose(); // Starts the application event loop
-        }
+        window.Show();
     }
 }
