@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "HelloPhotino.MultiWindow": {
+      "commandName": "Project",
+      "debugEngines": "managed,native"
+    }
+  }
+}

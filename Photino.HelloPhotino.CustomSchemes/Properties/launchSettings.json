@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "HelloPhotino.CustomSchemes": {
+      "commandName": "Project",
+      "debugEngines": "managed,native"
+    }
+  }
+}
