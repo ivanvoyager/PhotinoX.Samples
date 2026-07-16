@@ -8,9 +8,9 @@ namespace HelloPhotino.Vue;
 internal static class Program
 {
 #if DEBUG
-    private const bool IsDebugMode = true;
+    private static readonly bool IsDebugMode = true;
 #else
-    private const bool IsDebugMode = false;
+    private static readonly bool IsDebugMode = false;
 #endif
 
     [STAThread]

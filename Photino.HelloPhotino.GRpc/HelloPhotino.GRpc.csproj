@@ -21,7 +21,7 @@
     <PackageReference Include="Grpc.AspNetCore.Web" Version="2.80.0" />
     <PackageReference Include="Grpc.Core" Version="2.46.6" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.3.11" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.9" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.10" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(PhotinoX_UseLocalProjects)' != 'true'">
-    <PackageReference Include="PhotinoX" Version="4.3.0" />
+    <PackageReference Include="PhotinoX" Version="4.3.1" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(PhotinoX_UseLocalProjects)' == 'true'">

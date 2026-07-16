@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(PhotinoX_UseLocalProjects)' != 'true'">
-    <PackageReference Include="PhotinoX" Version="4.3.0" />
+    <PackageReference Include="PhotinoX" Version="4.3.1" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(PhotinoX_UseLocalProjects)' == 'true'">
