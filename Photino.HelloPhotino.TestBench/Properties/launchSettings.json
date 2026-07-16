@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "HelloPhotino.TestBench": {
+      "commandName": "Project",
+      "debugEngines": "managed,native"
+    }
+  }
+}
