@@ -10,6 +10,8 @@ internal static class Program
     {
         const string windowTitle = "PhotinoX 3D Pong";
 
+        var app = new PhotinoApplication();
+
         var window = new PhotinoWindow()
             .SetTitle(windowTitle)
             .SetUseOsDefaultSize(false)
@@ -18,6 +20,6 @@ internal static class Program
             .SetResizable(false)
             .Load("wwwroot/index.html");
 
-        window.Show();
+        app.Run(window);
     }
 }

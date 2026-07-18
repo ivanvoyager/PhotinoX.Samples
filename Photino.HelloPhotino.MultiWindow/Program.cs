@@ -10,7 +10,9 @@ internal static class Program
     [STAThread]
     private static void Main()
     {
-        new PhotinoWindow()
+        var app = new PhotinoApplication() { ShutdownMode = PhotinoShutdownMode.OnMainWindowClose };
+
+        var window = new PhotinoWindow()
             .SetTitle("Main Window")
             .RegisterWebMessageReceivedHandler(CloseWindowMessageDelegate)
             .RegisterWebMessageReceivedHandler(NewWindowMessageDelegate)
@@ -18,8 +20,9 @@ internal static class Program
             .SetWidth(600)
             .SetHeight(400)
             .Center()
-            .Load("wwwroot/main.html")
-            .Show();
+            .Load("wwwroot/main.html");
+
+        app.Run(window);
     }
 
     private static void CloseWindowMessageDelegate(object? sender, string message)
