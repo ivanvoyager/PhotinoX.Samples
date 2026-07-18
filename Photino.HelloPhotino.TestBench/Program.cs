@@ -134,9 +134,7 @@ class Program
 
             .SetLogVerbosity(s_logEvents ? 2 : 0);
 
-        s_mainWindow.Show();
-
-        app.Run();
+        app.Run(s_mainWindow);
 
         Console.WriteLine("Done!");
     }
@@ -226,9 +224,7 @@ class Program
         //Can this be done with a property? 
         s_mainWindow.RegisterCustomSchemeHandler("app", AppCustomSchemeUsed);
 
-        s_mainWindow.Show();
-
-        app.Run();
+        app.Run(s_mainWindow);
 
         Console.WriteLine("Done!");
     }
