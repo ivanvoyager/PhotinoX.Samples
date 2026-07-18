@@ -15,7 +15,7 @@ class Program
     private static PhotinoWindow? s_mainWindow;
 
     [STAThread]
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
         try
         {
@@ -31,6 +31,8 @@ class Program
 
     private static void FluentStyle()
     {
+        var app = new PhotinoApplication();
+
         var iconFile = Platform.IsWindows
             ? "wwwroot/photino-logo.ico"
             : "wwwroot/photino-logo.png";
@@ -134,11 +136,15 @@ class Program
 
         s_mainWindow.Show();
 
+        app.Run();
+
         Console.WriteLine("Done!");
     }
 
     private static void PropertyInitStyle()
     {
+        var app = new PhotinoApplication();
+
         var iconFile = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
             ? "wwwroot/photino-logo.ico"
             : "wwwroot/photino-logo.png";
@@ -221,6 +227,8 @@ class Program
         s_mainWindow.RegisterCustomSchemeHandler("app", AppCustomSchemeUsed);
 
         s_mainWindow.Show();
+
+        app.Run();
 
         Console.WriteLine("Done!");
     }

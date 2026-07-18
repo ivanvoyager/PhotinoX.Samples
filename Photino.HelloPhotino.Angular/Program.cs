@@ -28,6 +28,8 @@ internal static class Program
 
         const string windowTitle = "PhotinoX.Angular Demo App";
 
+        var app = new PhotinoApplication();
+
         var window = new PhotinoWindow()
             .SetTitle(windowTitle)
             .SetUseOsDefaultSize(false)
@@ -55,6 +57,6 @@ internal static class Program
             })
             .Load(appUrl);
 
-        window.Show();
+        app.Run(window);
     }
 }

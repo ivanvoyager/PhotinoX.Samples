@@ -9,6 +9,8 @@ internal static class Program
     [STAThread]
     private static void Main(string[] args)
     {
+        var app = new PhotinoApplication();
+
         var window = new PhotinoWindow()
             .SetTitle("PhotinoX Custom Schemes")
             .SetUseOsDefaultSize(false)
@@ -22,7 +24,7 @@ internal static class Program
             })
             .Load(new Uri("app://localhost/index.html"));
 
-        window.Show();
+        app.Run(window);
     }
 
     private static Stream HandleAppScheme(
