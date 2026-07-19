@@ -46,8 +46,16 @@
             window.external.sendMessage('maximize');
         }
 
+        function Restore() {
+            window.external.sendMessage('restore');
+        }
+
         function SetContextMenuEnabled() {
             window.external.sendMessage('setcontextmenuenabled');
+        }
+
+        function SetZoomEnabled() {
+            window.external.sendMessage('setzoomenabled');
         }
         
         function SetDevToolsEnabled() {
@@ -267,7 +275,7 @@
 
     </script>
 </head>
-<body style="background-color: rgba(0,0,0,0)">
+<body>
     <h1 id="Title">Test Bench</h1>
     <b>Window</b><br>
     <button onclick="SetIconFile()">Icon</button>
@@ -282,6 +290,7 @@
     <b>Size</b><br>
     <button onclick="Minimize()">Minimize</button>
     <button onclick="Maximize()">Maximize</button>
+    <button onclick="Restore()">Restore</button>
     <button onclick="SetResizable()">Resizable</button>
     <button onclick="SetSizeUp()">Size Up</button>
     <button onclick="SetSizeDown()">Size Down</button>
@@ -291,6 +300,7 @@
     <b>Browser</b><br>
     <button onclick="ZoomIn()">Zoom In</button>
     <button onclick="ZoomOut()">Zoom Out</button>
+    <button onclick="SetZoomEnabled()">Zoom</button>
     <button onclick="SetContextMenuEnabled()">Context Menu</button>
     <button onclick="SetDevToolsEnabled()">Dev Tools</button>
     <br>

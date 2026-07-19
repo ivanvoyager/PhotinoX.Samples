@@ -126,11 +126,16 @@ class Program
             .RegisterWindowCreatedHandler(WindowCreated)
             .RegisterLocationChangedHandler(WindowLocationChanged)
             .RegisterSizeChangedHandler(WindowSizeChanged)
-            .RegisterWebMessageReceivedHandler(MessageReceivedFromWindow)
+            .RegisterMaximizedHandler(WindowMaximized)
+            .RegisterRestoredHandler(WindowRestored)
+            .RegisterMinimizedHandler(WindowMinimized)
+            .RegisterWebMessageReceivedHandler(WindowWebMessageReceived)
             .RegisterWindowClosingHandler(WindowClosing)
             .RegisterWindowClosedHandler(WindowClosed)
             .RegisterFocusInHandler(WindowFocusIn)
             .RegisterFocusOutHandler(WindowFocusOut)
+            .RegisterFullScreenEnteredHandler(WindowFullScreenEntered)
+            .RegisterFullScreenExitedHandler(WindowFullScreenExited)
 
             .SetLogVerbosity(s_logEvents ? 2 : 0);
 
@@ -178,7 +183,7 @@ class Program
             //TopMost = true,
             UseOsDefaultLocation = false,
             UseOsDefaultSize = false,
-            Centered = true,
+            CenterOnInitialize = true,
             Size = new Size(800, 600),
             Height = 600,
             Width = 800,
@@ -216,10 +221,13 @@ class Program
         s_mainWindow.WindowMaximized += WindowMaximized;
         s_mainWindow.WindowRestored += WindowRestored;
         s_mainWindow.WindowMinimized += WindowMinimized;
-        s_mainWindow.WebMessageReceived += MessageReceivedFromWindow;
+        s_mainWindow.WebMessageReceived += WindowWebMessageReceived;
         s_mainWindow.WindowClosing += WindowClosing;
+        s_mainWindow.WindowClosed += WindowClosed;
         s_mainWindow.WindowFocusIn += WindowFocusIn;
         s_mainWindow.WindowFocusOut += WindowFocusOut;
+        s_mainWindow.FullScreenEntered += WindowFullScreenEntered;
+        s_mainWindow.FullScreenExited += WindowFullScreenExited;
 
         //Can this be done with a property? 
         s_mainWindow.RegisterCustomSchemeHandler("app", AppCustomSchemeUsed);
@@ -266,7 +274,7 @@ class Program
         return new MemoryStream(Encoding.UTF8.GetBytes(js));
     }
 
-    private static async void MessageReceivedFromWindow(object? sender, string message)
+    private static async void WindowWebMessageReceived(object? sender, string message)
     {
         Log(sender, $"MessageReceivedFromWindow Callback Fired.");
 
@@ -292,7 +300,7 @@ class Program
                 .RegisterWindowCreatedHandler(WindowCreated)
                 .RegisterLocationChangedHandler(WindowLocationChanged)
                 .RegisterSizeChangedHandler(WindowSizeChanged)
-                .RegisterWebMessageReceivedHandler(MessageReceivedFromWindow)
+                .RegisterWebMessageReceivedHandler(WindowWebMessageReceived)
                 .RegisterWindowClosingHandler(WindowClosing)
                 .RegisterWindowClosedHandler(WindowClosed)
 
@@ -336,6 +344,10 @@ class Program
         else if (string.Compare(message, "maximize", true) == 0)
         {
             currentWindow.SetMaximized(!currentWindow.Maximized);
+        }
+        else if (string.Compare(message, "restore", true) == 0)
+        {
+            currentWindow.Restore();
         }
         else if (string.Compare(message, "setcontextmenuenabled", true) == 0)
         {
@@ -485,6 +497,15 @@ class Program
         {
             var result = currentWindow.ShowMessage("Title", "Testing... 🤖");
         }
+        else if (string.Compare(message, "begindrag", true) == 0)
+        {
+            currentWindow.BeginWindowDrag();
+        }
+        else if (message.StartsWith("beginresize-", StringComparison.OrdinalIgnoreCase))
+        {
+            if (Enum.TryParse<PhotinoWindowEdge>(message["beginresize-".Length..], ignoreCase: true, out var edge))
+                currentWindow.BeginWindowResize(edge);
+        }
         else
             throw new Exception($"Unknown message '{message}'");
     }
@@ -544,7 +565,14 @@ class Program
         Log(sender, "WindowFocusOut Callback Fired.");
     }
 
-
+    private static void WindowFullScreenEntered(object? sender, EventArgs e)
+    {
+        Log(sender, "WindowFullScreenEntered Callback Fired.");
+    }
+    private static void WindowFullScreenExited(object? sender, EventArgs e)
+    {
+        Log(sender, "WindowFullScreenExited Callback Fired.");
+    }
 
 
     private static string GetPropertiesDisplay(PhotinoWindow currentWindow)
