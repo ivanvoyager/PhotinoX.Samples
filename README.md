@@ -1,3 +1,5 @@
+[![PhotinoX Logo](https://raw.githubusercontent.com/ivanvoyager/PhotinoX/refs/heads/master/assets/photinox-logo.png)](https://github.com/ivanvoyager/PhotinoX)
+
 # PhotinoX.Samples
 
 [![Build](https://github.com/ivanvoyager/PhotinoX.Samples/actions/workflows/build.yml/badge.svg)](https://github.com/ivanvoyager/PhotinoX.Samples/actions/workflows/build.yml)
@@ -17,7 +19,7 @@ PhotinoX uses OS‑native WebView engines:
 It keeps application size small and memory usage low by depending on the system’s built‑in **WebView** engines (instead of bundling Chromium).
 
 Core packages:
-- [**PhotinoX**](https://github.com/ivanvoyager/PhotinoX) .NET wrapper around the native layer.
+- [**PhotinoX**](https://github.com/ivanvoyager/PhotinoX) - .NET wrapper around the native layer.
 - [**PhotinoX.Native**](https://github.com/ivanvoyager/PhotinoX.Native) - native binaries for Windows/macOS/Linux.
 - [**PhotinoX.Blazor**](https://github.com/ivanvoyager/PhotinoX.Blazor) - Blazor integration for native desktop apps.
 - [**PhotinoX.Server**](https://github.com/ivanvoyager/PhotinoX.Server) - optional local static-file server for SPA/static assets.
@@ -40,6 +42,7 @@ This repository contains examples using a variety of frontend technologies:
 - 3D graphics using Three.js
 - 3D graphics with React + Three.js
 - Multi‑window example
+- Custom scheme example
 - Static File Server sample (useful for ESM/CORS limitations)
 - TestBench (WebAPI, OS calls, PowerShell calls, etc.)
 
@@ -68,6 +71,7 @@ Use `npm install` for local development or when modifying the frontend code.
 
 ### Run pure .NET samples (no npm)
 - `run-dotnet-Photino.HelloPhotino.3d.cmd`
+- `run-dotnet-Photino.HelloPhotino.CustomSchemes.cmd`
 - `run-dotnet-Photino.HelloPhotino.GRpc.cmd`
 - `run-dotnet-Photino.HelloPhotino.MultiWindow.cmd`
 - `run-dotnet-Photino.HelloPhotino.NET.cmd`
