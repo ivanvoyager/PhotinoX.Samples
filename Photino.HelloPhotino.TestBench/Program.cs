@@ -300,6 +300,7 @@ class Program
                 //.SetHeight(600)
                 //.SetWidth(800)
 
+                .SetUserAgent(currentWindow.UserAgent ?? "PhotinoX WebView")
                 .SetGrantBrowserPermissions(false)
 
                 .RegisterCreatingHandler(WindowCreating)
@@ -599,6 +600,7 @@ class Program
         sb.AppendLine($"Resizable: {currentWindow.Resizable}");
         sb.AppendLine($"Screen DPI: {currentWindow.ScreenDpi}");
         sb.AppendLine($"Topmost: {currentWindow.Topmost}");
+        sb.AppendLine($"WindowState: {currentWindow.WindowState}");
         //sb.AppendLine($"Maximized: {currentWindow.Maximized}");
         //sb.AppendLine($"Minimized: {currentWindow.Minimized}");
 

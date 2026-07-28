@@ -7,6 +7,7 @@ param(
     [string]$DotnetArgs = "run -c Debug",
     [int]$TimeoutSec = 180,
     [switch]$NoBrowser,                # suppress auto-opening browser where applicable
+    [switch]$ShowDevWindow,            # show dev server console window for diagnostics
     [switch]$List                      # list detected SPA projects
 )
 
@@ -112,20 +113,37 @@ if (Test-PortUp $Port) {
         # For CRA users: if you need to suppress auto-open, call with:
         #   -DevCmd "set BROWSER=none && npm run start"
         # Use cmd /c to keep a single child process we can kill later
-        $devCmdLine = 'cmd /c {0}' -f $DevCmd
         Info "Starting dev server ..."
-        $devProc = Start-Process -FilePath "powershell" `
-                  -ArgumentList "-NoLogo","-NoProfile","-Command",$devCmdLine `
-                  -WorkingDirectory $uiPath -PassThru -WindowStyle Hidden
-        $devOwned = $true
+
+		if ($ShowDevWindow) {
+		    $devProc = Start-Process -FilePath "cmd.exe" `
+		              -ArgumentList "/d", "/s", "/k", "`"$DevCmd`"" `
+		              -WorkingDirectory $uiPath `
+		              -PassThru
+		}
+		else {
+		    $devProc = Start-Process -FilePath "cmd.exe" `
+		              -ArgumentList "/d", "/s", "/c", "`"$DevCmd`"" `
+		              -WorkingDirectory $uiPath `
+		              -PassThru `
+		              -WindowStyle Hidden
+		}
+
+		$devOwned = $true
     } finally { Pop-Location }
 
     Info ("Waiting for http://localhost:{0}/ (or 127.0.0.1) ..." -f $Port)
     $deadline = (Get-Date).AddSeconds($TimeoutSec)
     while ((Get-Date) -lt $deadline) {
-        if (Test-PortUp $Port) { break }
-        Start-Sleep -Milliseconds 300
-    }
+	    if ($devProc.HasExited) {
+	        Err ("Dev server process exited with code {0}." -f $devProc.ExitCode)
+	        exit 1
+	    }
+
+	    if (Test-PortUp $Port) { break }
+
+	    Start-Sleep -Milliseconds 300
+	}
     if (-not (Test-PortUp $Port)) {
         Err ("Dev server did not start within {0} s." -f $TimeoutSec)
         if ($devOwned -and $devProc -and -not $devProc.HasExited) { try { $devProc.Kill() } catch {} }
@@ -148,7 +166,9 @@ finally {
     # Kill the dev server only if we started it
     if ($devOwned -and $devProc -and -not $devProc.HasExited) {
         Warn ("Stopping dev server (PID={0}) ..." -f $devProc.Id)
-        try { $devProc.Kill() } catch {}
+        try {
+		    & taskkill.exe /PID $devProc.Id /T /F | Out-Null
+		} catch {}
     } else {
         Warn "Dev server was not started by this script; leaving it running."
     }
