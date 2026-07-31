@@ -25,9 +25,9 @@ internal static class Program
         app.Run(window);
     }
 
-    private static void CloseWindowMessageDelegate(object? sender, string message)
+    private static void CloseWindowMessageDelegate(object? sender, WebMessageReceivedEventArgs e)
     {
-        if (message != "close-window")
+        if (e.Message != "close-window")
             return;
 
         var window = (PhotinoWindow)sender!;
@@ -36,9 +36,9 @@ internal static class Program
         window.Close();
     }
 
-    private static void NewWindowMessageDelegate(object? sender, string message)
+    private static void NewWindowMessageDelegate(object? sender, WebMessageReceivedEventArgs e)
     {
-        if (message != "random-window")
+        if (e.Message != "random-window")
             return;
 
         var parent = (PhotinoWindow)sender!;
