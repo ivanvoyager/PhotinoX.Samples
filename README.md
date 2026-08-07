@@ -19,7 +19,8 @@ PhotinoX uses OS‑native WebView engines:
 It keeps application size small and memory usage low by depending on the system’s built‑in **WebView** engines (instead of bundling Chromium).
 
 Core packages:
-- [**PhotinoX**](https://github.com/ivanvoyager/PhotinoX) - .NET wrapper around the native layer.
+- [**PhotinoX**](https://github.com/ivanvoyager/PhotinoX) - managed .NET wrapper around the native layer.
+- [**PhotinoX.App**](https://github.com/ivanvoyager/PhotinoX.App) - Application composition layer for PhotinoX desktop applications.
 - [**PhotinoX.Native**](https://github.com/ivanvoyager/PhotinoX.Native) - native binaries for Windows/macOS/Linux.
 - [**PhotinoX.Blazor**](https://github.com/ivanvoyager/PhotinoX.Blazor) - Blazor integration for native desktop apps.
 - [**PhotinoX.Server**](https://github.com/ivanvoyager/PhotinoX.Server) - optional local static-file server for SPA/static assets.

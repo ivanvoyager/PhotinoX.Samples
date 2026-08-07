@@ -1,17 +1,18 @@
 <Project>
+  <!-- Imports -->
+  <Import Project="$(MSBuildThisFileDirectory)..\Directory.Build.props" Condition="Exists('$(MSBuildThisFileDirectory)..\Directory.Build.props')" />
+
   <!-- Project properties -->
   <PropertyGroup>
     <LangVersion>14</LangVersion>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(PhotinoX_UseLocalProjects)' != 'true'">
-    <PackageReference Include="PhotinoX" Version="5.0.0-preview.8" />
+    <PackageReference Include="PhotinoX" Version="5.0.0-preview.9" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(PhotinoX_UseLocalProjects)' == 'true'">
     <ProjectReference Include="$(MSBuildThisFileDirectory)..\PhotinoX\Photino.NET\PhotinoX.csproj" />
   </ItemGroup>
 
-  <!-- Imports -->
-  <Import Project="$(MSBuildThisFileDirectory)..\Directory.Build.props" Condition="Exists('$(MSBuildThisFileDirectory)..\Directory.Build.props')" />
 </Project>
