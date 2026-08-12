@@ -72,7 +72,6 @@ Use `npm install` for local development or when modifying the frontend code.
 
 ### Run pure .NET samples (no npm)
 - `run-dotnet-Photino.HelloPhotino.3d.cmd`
-- `run-dotnet-Photino.HelloPhotino.CustomSchemes.cmd`
 - `run-dotnet-Photino.HelloPhotino.GRpc.cmd`
 - `run-dotnet-Photino.HelloPhotino.MultiWindow.cmd`
 - `run-dotnet-Photino.HelloPhotino.NET.cmd`
