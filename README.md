@@ -5,22 +5,22 @@
 [![Build](https://github.com/ivanvoyager/PhotinoX.Samples/actions/workflows/build.yml/badge.svg)](https://github.com/ivanvoyager/PhotinoX.Samples/actions/workflows/build.yml)
 [![License](https://img.shields.io/github/license/ivanvoyager/PhotinoX.Samples?label=license)](https://github.com/ivanvoyager/PhotinoX.Samples/blob/master/LICENSE)
 
-Sample projects showcasing **PhotinoX** — a lightweight, cross‑platform framework for building native desktop apps using Web UI technologies (Blazor, React, Vue, Angular, or plain HTML/JS).
-PhotinoX uses OS‑native WebView engines:
+Sample projects showcasing **PhotinoX** — a lightweight, cross-platform framework for building native desktop apps using Web UI technologies (Blazor, React, Vue, Angular, or plain HTML/JS).
+PhotinoX uses OS-native WebView engines:
 - **Windows**: WebView2
 - **macOS**: WKWebView
 - **Linux**: WebKitGTK 4.1
 
-> **Note:** `PhotinoX.Samples` is an independent fork of [tryphotino/photino.Samples](https://github.com/tryphotino/photino.Samples) under the Apache‑2.0 license and is **not affiliated** with the original project or organization.
+> **Note:** `PhotinoX.Samples` is an independent fork of [tryphotino/photino.Samples](https://github.com/tryphotino/photino.Samples) under the Apache-2.0 license and is **not affiliated** with the original project or organization.
 
 ## What is PhotinoX?
 
-`PhotinoX` is a lightweight, open‑source platform for building native desktop applications using modern **Web UI** stacks.
-It keeps application size small and memory usage low by depending on the system’s built‑in **WebView** engines (instead of bundling Chromium).
+`PhotinoX` is a lightweight, open-source platform for building native desktop applications using modern **Web UI** stacks.
+It keeps application size small and memory usage low by depending on the system’s built-in **WebView** engines (instead of bundling Chromium).
 
 Core packages:
 - [**PhotinoX**](https://github.com/ivanvoyager/PhotinoX) - managed .NET wrapper around the native layer.
-- [**PhotinoX.App**](https://github.com/ivanvoyager/PhotinoX.App) - Application composition layer for PhotinoX desktop applications.
+- [**PhotinoX.App**](https://github.com/ivanvoyager/PhotinoX.App) - application composition layer for PhotinoX desktop applications.
 - [**PhotinoX.Native**](https://github.com/ivanvoyager/PhotinoX.Native) - native binaries for Windows/macOS/Linux.
 - [**PhotinoX.Blazor**](https://github.com/ivanvoyager/PhotinoX.Blazor) - Blazor integration for native desktop apps.
 - [**PhotinoX.Server**](https://github.com/ivanvoyager/PhotinoX.Server) - optional local static-file server for SPA/static assets.
@@ -42,12 +42,12 @@ This repository contains examples using a variety of frontend technologies:
 - gRPC local communication
 - 3D graphics using Three.js
 - 3D graphics with React + Three.js
-- Multi‑window example
+- Multi-window example
 - Custom scheme example
 - Static File Server sample (useful for ESM/CORS limitations)
 - TestBench (WebAPI, OS calls, PowerShell calls, etc.)
 
-Each folder starting with `Photino.HelloPhotino.*` is a self‑contained sample project.
+Each folder starting with `Photino.HelloPhotino.*` is a self-contained sample project.
 
 ## Tooling
 
@@ -78,7 +78,7 @@ Use `npm install` for local development or when modifying the frontend code.
 - `run-dotnet-Photino.HelloPhotino.StaticFileServer.cmd`
 - `run-dotnet-Photino.HelloPhotino.TestBench.cmd`
 
-These scripts are optional but greatly simplify both development (npm dev servers) and .NET‑only runs.
+These scripts are optional but greatly simplify both development (npm dev servers) and .NET-only runs.
 
 ## Requirements
 
@@ -110,4 +110,4 @@ Issues and PRs are welcome. Keep PRs focused, minimal, and consistent with the r
 
 ## License
 
-PhotinoX.Samples is licensed under **Apache‑2.0**.
+PhotinoX.Samples is licensed under **Apache-2.0**.
