@@ -2,7 +2,7 @@
 
 # PhotinoX.Samples
 
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/ivanvoyager/PhotinoX.Samples)
+[![Ask DeepWiki](https://img.shields.io/badge/Ask-DeepWiki-blue)](https://deepwiki.com/ivanvoyager/PhotinoX.Samples)
 [![Build](https://github.com/ivanvoyager/PhotinoX.Samples/actions/workflows/build.yml/badge.svg)](https://github.com/ivanvoyager/PhotinoX.Samples/actions/workflows/build.yml)
 [![License](https://img.shields.io/github/license/ivanvoyager/PhotinoX.Samples?label=license)](https://github.com/ivanvoyager/PhotinoX.Samples/blob/master/LICENSE)
 
