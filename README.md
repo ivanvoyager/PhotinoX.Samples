@@ -84,7 +84,7 @@ These scripts are optional but greatly simplify both development (npm dev server
 
 ## Requirements
 
-- **.NET**: 8, 9, or 10
+- **.NET**: 8, 9, 10 or 11
 - Node.js + npm (for SPA samples)
 - **Windows:** WebView2 Runtime  
   Required component: **Microsoft.Web.WebView2** (Edge WebView2)  

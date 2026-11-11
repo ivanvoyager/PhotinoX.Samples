@@ -1,6 +1,7 @@
-name: build
+name: Build
 
 on:
+  workflow_dispatch: {}
   push:
     branches: [ master ]
   pull_request:
@@ -9,15 +10,20 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v6
-      - name: setup dotnet
-        uses: actions/setup-dotnet@v5
-        with:
-          dotnet-version: 10.0.x
 
-      - name: restore
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: |
+            10.0.x
+            11.0.x
+
+      - name: Restore
         run: dotnet restore --nologo
 
-      - name: build
-        run: dotnet build -c Release --no-restore --nologo
+      - name: Build
+        run: dotnet build -c Release --no-restore --nologo -warnaserror
