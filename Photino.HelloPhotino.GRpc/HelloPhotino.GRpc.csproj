@@ -19,6 +19,7 @@
     <PackageReference Include="Grpc.AspNetCore" Version="2.85.0" />
     <PackageReference Include="Grpc.AspNetCore.Web" Version="2.85.0" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.3.14" />
+    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.3.14" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' != 'net11.0'">
